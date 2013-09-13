@@ -47,8 +47,7 @@ const uint8_t smp_length = sizeof(smp);
 
 
 void invocation(const ComType com, const uint8_t *data) {
-	const SimpleGetValue *sgv = (SimpleGetValue*)data;
-	switch(sgv->header.fid) {
+	switch(((MessageHeader*)data)->fid) {
 		case FID_GET_MOISTURE:
 		case FID_SET_MOISTURE_CALLBACK_PERIOD:
 		case FID_GET_MOISTURE_CALLBACK_PERIOD:
