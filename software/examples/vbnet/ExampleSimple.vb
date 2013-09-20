@@ -13,7 +13,7 @@ Module ExampleSimple
         ' Don't use device before ipcon is connected
 
         ' Get current moisture value
-        Dim moisture As Integer = m.GetMoisture()
+        Dim moisture As Integer = m.GetMoistureValue()
 
         System.Console.WriteLine("Moisture Value: " + moisture.ToString())
 
