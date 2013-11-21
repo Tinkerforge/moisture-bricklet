@@ -107,6 +107,11 @@ void destructor(void) {
 
 int32_t moisture_from_analog_value(const int32_t value) {
 	uint16_t analog_data = BA->adc_channel_get_data(BS->adc_channel);
+
+	if (BC->moving_average_num == 0) {
+		return analog_data;
+	}
+
 	BC->moving_average_sum = BC->moving_average_sum -
 	                         BC->moving_average[BC->moving_average_tick] +
 	                         analog_data;
