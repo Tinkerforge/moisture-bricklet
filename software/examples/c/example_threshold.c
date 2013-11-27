@@ -8,7 +8,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback for moisture value greater than 200 Lux
+// Callback for moisture value greater than 200
 void cb_reached(uint16_t moisture, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
