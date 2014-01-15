@@ -6,9 +6,9 @@ require_once('Tinkerforge/BrickletMoisture.php');
 use Tinkerforge\IPConnection;
 use Tinkerforge\BrickletMoisture;
 
-$host = 'localhost';
-$port = 4223;
-$uid = 'XYZ'; // Change to your UID
+const HOST = 'localhost';
+const PORT = 4223;
+const UID = 'XYZ'; // Change to your UID
 
 // Callback function for moisture value
 function cb_moisture($moisture)
@@ -17,9 +17,9 @@ function cb_moisture($moisture)
 }
 
 $ipcon = new IPConnection(); // Create IP connection
-$m = new BrickletMoisture($uid, $ipcon); // Create device object
+$m = new BrickletMoisture(UID, $ipcon); // Create device object
 
-$ipcon->connect($host, $port); // Connect to brickd
+$ipcon->connect(HOST, PORT); // Connect to brickd
 // Don't use device before ipcon is connected
 
 // Set Period for moisture callback to 1s (1000ms)
