@@ -14,8 +14,8 @@ sub cb_reached
     print "\nMoisture Value: $moisture\n";
 }
 
-my $ipcon = IPConnection->new(); # Create IP connection
-my $m = BrickletMoisture->new(&UID, $ipcon); # Create device object
+my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
+my $m = Tinkerforge::BrickletMoisture->new(&UID, $ipcon); # Create device object
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
