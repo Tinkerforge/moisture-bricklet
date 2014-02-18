@@ -1,12 +1,11 @@
-var IPConnection = require('Tinkerforge/IPConnection');
-var BrickletMoisture = require('Tinkerforge/BrickletMoisture');
+var Tinkerforge = require('tinkerforge');
 
 var HOST = 'localhost';
 var PORT = 4223;
 var UID = 'iB4';// Change to your UID
 
-var ipcon = new IPConnection();// Create IP connection
-var m = new BrickletMoisture(UID, ipcon);// Create device object
+var ipcon = new Tinkerforge.IPConnection();// Create IP connection
+var m = new Tinkerforge.BrickletMoisture(UID, ipcon);// Create device object
 
 ipcon.connect(HOST, PORT,
     function(error) {
@@ -14,7 +13,7 @@ ipcon.connect(HOST, PORT,
     }
 );// Connect to brickd
 
-ipcon.on(IPConnection.CALLBACK_CONNECTED,
+ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Get current moisture value
         m.getMoistureValue(
