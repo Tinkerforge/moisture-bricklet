@@ -13,6 +13,7 @@ ipcon.connect(HOST, PORT,
     }
 );// Connect to brickd
 
+// Don't use device before ipcon is connected
 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Get current moisture value
