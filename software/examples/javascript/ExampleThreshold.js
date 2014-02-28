@@ -2,28 +2,28 @@ var Tinkerforge = require('tinkerforge');
 
 var HOST = 'localhost';
 var PORT = 4223;
-var UID = 'iB4';// Change to your UID
+var UID = 'iB4'; // Change to your UID
 
-var ipcon = new Tinkerforge.IPConnection();// Create IP connection
-var m = new Tinkerforge.BrickletMoisture(UID, ipcon);// Create device object
+var ipcon = new Tinkerforge.IPConnection(); // Create IP connection
+var m = new Tinkerforge.BrickletMoisture(UID, ipcon); // Create device object
 
 ipcon.connect(HOST, PORT,
     function(error) {
-        console.log('Error: '+error);        
+        console.log('Error: '+error);
     }
-);// Connect to brickd
-
+); // Connect to brickd
 // Don't use device before ipcon is connected
+
 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
     function(connectReason) {
         // Set Period for moisture callback to 1s (1000ms)
-        // Note: The moisture callback is only called every second if the 
+        // Note: The moisture callback is only called every second if the
         // moisture has changed since the last call!
         m.setMoistureCallbackPeriod(1000);
         // Get threshold callbacks with a debounce time of 1 seconds (1000ms)
         m.setDebouncePeriod(1000);
         // Configure threshold for "greater than 200"
-        m.setMoistureCallbackThreshold('>', 200, 0);      
+        m.setMoistureCallbackThreshold('>', 200, 0);
     }
 );
 
@@ -42,4 +42,3 @@ process.stdin.on('data',
         process.exit(0);
     }
 );
-
