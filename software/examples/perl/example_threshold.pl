@@ -11,7 +11,8 @@ use constant UID => '7xwQ9g'; # Change to your UID
 sub cb_reached
 {
     my ($moisture) = @_;
-    print "\nMoisture Value: $moisture\n";
+
+    print "Moisture Value: $moisture\n";
 }
 
 my $ipcon = Tinkerforge::IPConnection->new(); # Create IP connection
@@ -29,7 +30,7 @@ $m->register_callback($m->CALLBACK_MOISTURE_REACHED, 'cb_reached');
 # Configure threshold for "greater than 200"
 $m->set_moisture_callback_threshold('>', 200, 0);
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
 

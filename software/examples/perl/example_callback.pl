@@ -14,7 +14,8 @@ my $m = Tinkerforge::BrickletMoisture->new(&UID, $ipcon); # Create device object
 sub cb_moisture
 {
     my ($moisture) = @_;
-    print "\nMoisture Value: $moisture\n";
+
+    print "Moisture Value: $moisture\n";
 }
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
@@ -28,7 +29,7 @@ $m->set_moisture_callback_period(1000);
 # Register moisture callback to function cb_moisture
 $m->register_callback($m->CALLBACK_MOISTURE, 'cb_moisture');
 
-print "\nPress any key to exit...\n";
+print "Press any key to exit...\n";
 <STDIN>;
 $ipcon->disconnect();
 
