@@ -18,13 +18,13 @@ function matlab_example_callback
     m.setMoistureCallbackPeriod(1000);
 
     % Register moisture callback to function cb_moisture
-    set(m, 'MoistureCallback', @(h, e)cb_moisture(e.moisture));
+    set(m, 'MoistureCallback', @(h, e) cb_moisture(e));
 
-    input('\nPress any key to exit...\n', 's');
+    input('Press any key to exit...\n', 's');
     ipcon.disconnect();
 end
 
 % Callback function for moisture value 
-function cb_moisture(moisture)
-    fprintf('Moisture Value: %g\n', moisture);
+function cb_moisture(e)
+    fprintf('Moisture Value: %g\n', e.moisture);
 end

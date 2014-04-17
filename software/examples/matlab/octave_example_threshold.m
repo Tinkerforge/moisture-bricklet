@@ -15,16 +15,16 @@ function octave_example_threshold
     m.setDebouncePeriod(1000);
 
     % Register threshold reached callback to function cb_reached
-    m.addMoistureReachedListener("cb_reached");
+    m.addMoistureReachedCallback(@cb_reached);
 
     % Configure threshold for "greater than 200"
     m.setMoistureCallbackThreshold(">", 200, 0);
 
-    input("\nPress any key to exit...\n", "s");
+    input("Press any key to exit...\n", "s");
     ipcon.disconnect();
 end
 
 % Callback for moisture value greater than 200
-function cb_reached(moisture)
-    fprintf("Moisture Value: %g\n", moisture);
+function cb_reached(e)
+    fprintf("Moisture Value: %g\n", e.moisture);
 end

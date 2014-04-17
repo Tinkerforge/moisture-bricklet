@@ -16,16 +16,16 @@ function matlab_example_threshold
     m.setDebouncePeriod(1000);
 
     % Register threshold reached callback to function cb_reached
-    set(m, 'MoistureReachedCallback', @(h, e)cb_reached(e.moisture));
+    set(m, 'MoistureReachedCallback', @(h, e) cb_reached(e));
 
     % Configure threshold for "greater than 200"
     m.setMoistureCallbackThreshold('>', 200, 0);
 
-    input('\nPress any key to exit...\n', 's');
+    input('Press any key to exit...\n', 's');
     ipcon.disconnect();
 end
 
 % Callback for moisture value greater than 200
-function cb_reached(moisture)
-    fprintf('Moisture Value: %g\n', moisture);
+function cb_reached(e)
+    fprintf('Moisture Value: %g\n', e.moisture);
 end
