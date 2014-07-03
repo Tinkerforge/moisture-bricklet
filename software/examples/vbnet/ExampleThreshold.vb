@@ -24,7 +24,7 @@ Module ExampleThreshold
         AddHandler m.MoistureReached, AddressOf ReachedCB
 
         ' Configure threshold for "greater than 200"
-        m.SetMoistureCallbackThreshold(">", 200, 0)
+        m.SetMoistureCallbackThreshold(">"C, 200, 0)
 
         System.Console.WriteLine("Press key to exit")
         System.Console.ReadKey()
