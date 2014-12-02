@@ -29,8 +29,8 @@ class Example
 		// Configure threshold for "greater than 200"
 		m.SetMoistureCallbackThreshold('>', 200, 0);
 
-		System.Console.WriteLine("Press key to exit");
-		System.Console.ReadKey();
+		System.Console.WriteLine("Press enter to exit");
+		System.Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }
