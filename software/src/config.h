@@ -40,6 +40,7 @@
 #define BRICKLET_DEVICE_IDENTIFIER 232
 
 #define PIN_AD_MOISTURE (BS->pin1_ad)
+#define PIN_SW_ON_OFF (BS->pin2_da)
 
 #define LOGGING_LEVEL LOGGING_DEBUG
 #define DEBUG_BRICKLET 0

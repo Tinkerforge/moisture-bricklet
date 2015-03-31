@@ -30,8 +30,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:tinkerforge
-LIBS:moisture-cache
-EELAYER 24 0
+EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -442,4 +441,6 @@ Wire Wire Line
 Wire Wire Line
 	6100 2650 6100 2550
 Connection ~ 6100 1650
+Text Notes 8100 2750 0    60   ~ 0
+Alt NTR2101
 $EndSCHEMATC

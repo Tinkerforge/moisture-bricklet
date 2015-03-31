@@ -44,7 +44,7 @@ const SimpleUnitProperty sup[] = {
 };
 
 const uint8_t smp_length = sizeof(smp);
-
+uint8_t counter = 0;
 
 void invocation(const ComType com, const uint8_t *data) {
 	switch(((MessageHeader*)data)->fid) {
@@ -84,6 +84,10 @@ void constructor(void) {
 	PIN_AD_MOISTURE.type = PIO_INPUT;
 	PIN_AD_MOISTURE.attribute = PIO_DEFAULT;
     BA->PIO_Configure(&PIN_AD_MOISTURE, 1);
+
+	PIN_SW_ON_OFF.type = PIO_OUTPUT_1;
+	PIN_SW_ON_OFF.attribute = PIO_DEFAULT;
+    BA->PIO_Configure(&PIN_SW_ON_OFF, 1);
 
     BC->moving_average_sum = 0;
     BC->moving_average_tick = 0;
@@ -142,4 +146,14 @@ void get_moving_average(const ComType com, const GetMovingAverage *data) {
 
 void tick(const uint8_t tick_type) {
 	simple_tick(tick_type);
+
+	if (counter % 2) {					//idee %16
+		PIN_SW_ON_OFF.type = PIO_OUTPUT_1;
+    	BA->PIO_Configure(&PIN_SW_ON_OFF, 1);
+	}
+	else {
+		PIN_SW_ON_OFF.type = PIO_OUTPUT_0;
+    	BA->PIO_Configure(&PIN_SW_ON_OFF, 1);
+	}
+	counter += 1;
 }
