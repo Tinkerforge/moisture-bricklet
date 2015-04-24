@@ -41,6 +41,7 @@
 
 #define PIN_AD_MOISTURE (BS->pin1_ad)
 #define PIN_SW_ON_OFF (BS->pin2_da)
+#define PIN_PW_ON_OFF (BS->pin3_pwm)
 
 #define LOGGING_LEVEL LOGGING_DEBUG
 #define DEBUG_BRICKLET 0
@@ -49,6 +50,7 @@
 #define BRICKLET_NO_OFFSET
 #define INVOCATION_IN_BRICKLET_CODE
 #define NUM_SIMPLE_VALUES 1
+#define BOARD_MCK 64000000
 
 typedef struct {
 	int32_t value[NUM_SIMPLE_VALUES];
