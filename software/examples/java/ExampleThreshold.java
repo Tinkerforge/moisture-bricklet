@@ -19,7 +19,7 @@ public class ExampleThreshold {
 		al.setDebouncePeriod(1000);
 
 		// Configure threshold for "greater than 200"
-		al.setMoistureCallbackThreshold('>', (short)(200), (short)0);
+		al.setMoistureCallbackThreshold('>', (short)200, (short)0);
 
 		// Add and implement moisture reached listener 
 		// (called if moisture is greater than 200)
