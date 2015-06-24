@@ -55,8 +55,7 @@
                 m.on(Tinkerforge.BrickletMoisture.CALLBACK_MOISTURE_REACHED,
                     // Callback for moisture value greater than 200
                     function(moisture) {
-                        textArea.value += 'Moisture Value: '+moisture;
-                        textArea.value += '\n';
+                        textArea.value += 'Moisture Value: '+moisture+'\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );
