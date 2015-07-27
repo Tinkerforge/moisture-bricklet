@@ -1,31 +1,30 @@
-import com.tinkerforge.BrickletMoisture;
 import com.tinkerforge.IPConnection;
+import com.tinkerforge.BrickletMoisture;
 
 public class ExampleThreshold {
 	private static final String HOST = "localhost";
 	private static final int PORT = 4223;
 	private static final String UID = "XYZ"; // Change to your UID
-	
+
 	// Note: To make the example code cleaner we do not handle exceptions. Exceptions you
 	//       might normally want to catch are described in the documentation
 	public static void main(String args[]) throws Exception {
 		IPConnection ipcon = new IPConnection(); // Create IP connection
-		BrickletMoisture al = new BrickletMoisture(UID, ipcon); // Create device object
+		BrickletMoisture m = new BrickletMoisture(UID, ipcon); // Create device object
 
 		ipcon.connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
-		// Get threshold callbacks with a debounce time of 1 seconds (1000ms)
-		al.setDebouncePeriod(1000);
+		// Get threshold callbacks with a debounce time of 1 second (1000ms)
+		m.setDebouncePeriod(1000);
 
 		// Configure threshold for "greater than 200"
-		al.setMoistureCallbackThreshold('>', (short)200, (short)0);
+		m.setMoistureCallbackThreshold('>', 200, 0);
 
-		// Add and implement moisture reached listener 
-		// (called if moisture is greater than 200)
-		al.addMoistureReachedListener(new BrickletMoisture.MoistureReachedListener() {
+		// Add threshold reached listener for moisture value greater than 200
+		m.addMoistureReachedListener(new BrickletMoisture.MoistureReachedListener() {
 			public void moistureReached(int moisture) {
-				System.out.println("Moisture Value " + moisture);
+				System.out.println("Moisture Value: " + moisture);
 			}
 		});
 

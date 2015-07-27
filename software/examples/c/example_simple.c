@@ -14,7 +14,7 @@ int main() {
 
 	// Create device object
 	Moisture m;
-	moisture_create(&m, UID, &ipcon); 
+	moisture_create(&m, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -24,13 +24,13 @@ int main() {
 	// Don't use device before ipcon is connected
 
 	// Get current moisture value
-	uint16_t moisture;
-	if(moisture_get_moisture_value(&m, &moisture) < 0) {
-		fprintf(stderr, "Could not get value, probably timeout\n");
+	uint16_t moisture_value;
+	if(moisture_get_moisture_value(&m, &moisture_value) < 0) {
+		fprintf(stderr, "Could not get moisture value, probably timeout\n");
 		exit(1);
 	}
 
-	printf("Moisture Value: %d\n", moisture);
+	printf("Moisture Value: %d\n", moisture_value);
 
 	printf("Press key to exit\n");
 	getchar();

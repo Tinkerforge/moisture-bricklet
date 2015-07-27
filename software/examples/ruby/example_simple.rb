@@ -17,8 +17,8 @@ ipcon.connect HOST, PORT # Connect to brickd
 # Don't use device before ipcon is connected
 
 # Get current moisture value
-moisture = m.get_moisture_value
-puts "Moisture Value: #{moisture}"
+moisture_value = m.get_moisture_value
+puts "Moisture Value: #{moisture_value}"
 
 puts 'Press key to exit'
 $stdin.gets

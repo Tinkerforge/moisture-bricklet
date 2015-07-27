@@ -7,8 +7,8 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback for moisture value greater than 200
-void cb_reached(uint16_t moisture, void *user_data) {
+// Callback function for moisture value greater than 200
+void cb_moisture_reached(uint16_t moisture, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
 	printf("Moisture Value: %d\n", moisture);
@@ -21,7 +21,7 @@ int main() {
 
 	// Create device object
 	Moisture m;
-	moisture_create(&m, UID, &ipcon); 
+	moisture_create(&m, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -30,13 +30,13 @@ int main() {
 	}
 	// Don't use device before ipcon is connected
 
-	// Get threshold callbacks with a debounce time of 1 seconds (1000ms)
+	// Get threshold callbacks with a debounce time of 1 second (1000ms)
 	moisture_set_debounce_period(&m, 1000);
 
-	// Register threshold reached callback to function cb_reached
+	// Register threshold reached callback to function cb_moisture_reached
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE_REACHED,
-	                           (void *)cb_reached,
+	                           (void *)cb_moisture_reached,
 	                           NULL);
 
 	// Configure threshold for "greater than 200"

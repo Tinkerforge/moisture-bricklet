@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback function for moisture value 
+// Callback function for moisture value callback
 void cb_moisture(uint16_t moisture, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
@@ -21,7 +21,7 @@ int main() {
 
 	// Create device object
 	Moisture m;
-	moisture_create(&m, UID, &ipcon); 
+	moisture_create(&m, UID, &ipcon);
 
 	// Connect to brickd
 	if(ipcon_connect(&ipcon, HOST, PORT) < 0) {
@@ -30,12 +30,12 @@ int main() {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set Period for moisture callback to 1s (1000ms)
-	// Note: The moisture callback is only called every second if the 
-	//       moisture value has changed since the last call!
+	// Set period for moisture value callback to 1s (1000ms)
+	// Note: The moisture value callback is only called every second
+	//       if the moisture value has changed since the last call!
 	moisture_set_moisture_callback_period(&m, 1000);
 
-	// Register moisture callback to function cb_moisture
+	// Register moisture value callback to function cb_moisture
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE,
 	                           (void *)cb_moisture,

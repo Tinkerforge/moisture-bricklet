@@ -16,7 +16,7 @@ m = BrickletMoisture.new UID, ipcon # Create device object
 ipcon.connect HOST, PORT # Connect to brickd
 # Don't use device before ipcon is connected
 
-# Get threshold callbacks with a debounce time of 1 seconds (1000ms)
+# Get threshold callbacks with a debounce time of 1 second (1000ms)
 m.set_debounce_period 1000
 
 # Register threshold reached callback for moisture value greater than 200
