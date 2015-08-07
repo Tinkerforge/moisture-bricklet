@@ -6,7 +6,7 @@ PORT = 4223
 UID = "XYZ" # Change to your UID
 
 from tinkerforge.ip_connection import IPConnection
-from tinkerforge.bricklet_moisture import Moisture
+from tinkerforge.bricklet_moisture import BrickletMoisture
 
 # Callback function for moisture value greater than 200
 def cb_moisture_reached(moisture):
@@ -14,7 +14,7 @@ def cb_moisture_reached(moisture):
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection
-    m = Moisture(UID, ipcon) # Create device object
+    m = BrickletMoisture(UID, ipcon) # Create device object
 
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
