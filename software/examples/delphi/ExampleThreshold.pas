@@ -12,7 +12,7 @@ type
     ipcon: TIPConnection;
     m: TBrickletMoisture;
   public
-    procedure ReachedCB(sender: TBrickletMoisture; const moisture: word);
+    procedure MoistureReachedCB(sender: TBrickletMoisture; const moisture: word);
     procedure Execute;
   end;
 
@@ -24,8 +24,8 @@ const
 var
   e: TExample;
 
-{ Callback for moisture value greater than 200 }
-procedure TExample.ReachedCB(sender: TBrickletMoisture; const moisture: word);
+{ Callback procedure for moisture value greater than 200 }
+procedure TExample.MoistureReachedCB(sender: TBrickletMoisture; const moisture: word);
 begin
   WriteLn(Format('Moisture Value: %d', [moisture]));
 end;
@@ -42,11 +42,11 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
-  { Get threshold callbacks with a debounce time of 1 seconds (1000ms) }
+  { Get threshold callbacks with a debounce time of 1 second (1000ms) }
   m.SetDebouncePeriod(1000);
 
-  { Register threshold reached callback to procedure ReachedCB }
-  m.OnMoistureReached := {$ifdef FPC}@{$endif}ReachedCB;
+  { Register threshold reached callback to procedure MoistureReachedCB }
+  m.OnMoistureReached := {$ifdef FPC}@{$endif}MoistureReachedCB;
 
   { Configure threshold for "greater than 200" }
   m.SetMoistureCallbackThreshold('>', 200, 0);

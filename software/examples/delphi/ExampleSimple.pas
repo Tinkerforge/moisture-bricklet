@@ -24,7 +24,7 @@ var
   e: TExample;
 
 procedure TExample.Execute;
-var moisture: word;
+var moistureValue: word;
 begin
   { Create IP connection }
   ipcon := TIPConnection.Create;
@@ -37,8 +37,8 @@ begin
   { Don't use device before ipcon is connected }
 
   { Get current moisture value }
-  moisture := m.GetMoistureValue;
-  WriteLn(Format('Moisture Value: %d', [moisture]));
+  moistureValue := m.GetMoistureValue;
+  WriteLn(Format('Moisture Value: %d', [moistureValue]));
 
   WriteLn('Press key to exit');
   ReadLn;
