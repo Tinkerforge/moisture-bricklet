@@ -17,12 +17,12 @@ Module ExampleCallback
         ipcon.Connect(HOST, PORT) ' Connect to brickd
         ' Don't use device before ipcon is connected
 
-        ' Set Period for moisture callback to 1s (1000ms)
-        ' Note: The moisture callback is only called every second if the
-        '       moisture value has changed since the last call!
+        ' Set period for moisture value callback to 1s (1000ms)
+        ' Note: The moisture value callback is only called every second
+        '       if the moisture value has changed since the last call!
         m.SetMoistureCallbackPeriod(1000)
 
-        ' Register moisture callback to function MoistureCB
+        ' Register moisture value callback to function MoistureCB
         AddHandler m.Moisture, AddressOf MoistureCB
 
         System.Console.WriteLine("Press key to exit")
