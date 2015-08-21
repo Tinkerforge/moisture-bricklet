@@ -15,7 +15,7 @@ sub cb_moisture
 {
     my ($moisture) = @_;
 
-    print "Moisture Value: " . $moisture . "\n";
+    print "Moisture Value: $moisture\n";
 }
 
 $ipcon->connect(&HOST, &PORT); # Connect to brickd
