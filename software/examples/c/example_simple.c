@@ -24,13 +24,13 @@ int main(void) {
 	// Don't use device before ipcon is connected
 
 	// Get current moisture value
-	uint16_t moisture_value;
-	if(moisture_get_moisture_value(&m, &moisture_value) < 0) {
+	uint16_t moisture;
+	if(moisture_get_moisture_value(&m, &moisture) < 0) {
 		fprintf(stderr, "Could not get moisture value, probably timeout\n");
 		return 1;
 	}
 
-	printf("Moisture Value: %d\n", moisture_value);
+	printf("Moisture Value: %d\n", moisture);
 
 	printf("Press key to exit\n");
 	getchar();
