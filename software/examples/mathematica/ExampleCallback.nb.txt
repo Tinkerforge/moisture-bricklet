@@ -3,26 +3,26 @@ LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
 
 host="localhost"
 port=4223
-uid="amb"(* Change to your UID *)
+uid="XYZ"(*Change to your UID*)
 
-(* Create IPConnection and device object *)
+(*Create IPConnection and device object*)
 ipcon=NETNew["Tinkerforge.IPConnection"]
 m=NETNew["Tinkerforge.BrickletMoisture",uid,ipcon]
 ipcon@Connect[host,port]
 
-(* Set Period for moisture callback to 1s (1000ms) *)
-(* Note: The moisture callback is only called every second if the *)
-(*       moisture has changed since the last call! *)
-m@SetMoistureCallbackPeriod[1000]
-
-(* Callback function for moisture callback *)
+(*Callback function for moisture value callback*)
 MoistureCB[sender_,moisture_]:=
  Print["Moisture Value: "<>ToString[moisture]]
 AddEventHandler[m@Moisture,MoistureCB]
 
+(*Set period for moisture value callback to 1s (1000ms)*)
+(*Note: The moisture value callback is only called every second*)
+(*if the moisture value has changed since the last call!*)
+m@SetMoistureCallbackPeriod[1000]
+
 Input["Click OK to exit"]
 
-(* Clean up *)
+(*Clean up*)
 ipcon@Disconnect[]
 ReleaseNETObject[m]
 ReleaseNETObject[ipcon]

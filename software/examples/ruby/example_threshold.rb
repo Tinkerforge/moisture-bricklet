@@ -19,12 +19,12 @@ ipcon.connect HOST, PORT # Connect to brickd
 # Get threshold callbacks with a debounce time of 1 second (1000ms)
 m.set_debounce_period 1000
 
-# Register threshold reached callback for moisture value greater than 200
+# Register moisture value reached callback
 m.register_callback(BrickletMoisture::CALLBACK_MOISTURE_REACHED) do |moisture|
   puts "Moisture Value: #{moisture}"
 end
 
-# Configure threshold for "greater than 200"
+# Configure threshold for moisture value "greater than 200"
 m.set_moisture_callback_threshold '>', 200, 0
 
 puts 'Press key to exit'

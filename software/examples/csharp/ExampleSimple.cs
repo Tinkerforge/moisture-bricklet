@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -15,11 +16,11 @@ class Example
 		// Don't use device before ipcon is connected
 
 		// Get current moisture value
-		int moistureValue = m.GetMoistureValue();
-		System.Console.WriteLine("Moisture Value: " + moistureValue);
+		int moisture = m.GetMoistureValue();
+		Console.WriteLine("Moisture Value: " + moisture);
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

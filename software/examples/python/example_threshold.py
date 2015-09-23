@@ -8,9 +8,9 @@ UID = "XYZ" # Change to your UID
 from tinkerforge.ip_connection import IPConnection
 from tinkerforge.bricklet_moisture import BrickletMoisture
 
-# Callback function for moisture value greater than 200
+# Callback function for moisture value reached callback
 def cb_moisture_reached(moisture):
-    print('Moisture Value: ' + str(moisture))
+    print("Moisture Value: " + str(moisture))
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection
@@ -22,11 +22,11 @@ if __name__ == "__main__":
     # Get threshold callbacks with a debounce time of 1 second (1000ms)
     m.set_debounce_period(1000)
 
-    # Register threshold reached callback to function cb_moisture_reached
+    # Register moisture value reached callback to function cb_moisture_reached
     m.register_callback(m.CALLBACK_MOISTURE_REACHED, cb_moisture_reached)
 
-    # Configure threshold for "greater than 200"
-    m.set_moisture_callback_threshold('>', 200, 0)
+    # Configure threshold for moisture value "greater than 200"
+    m.set_moisture_callback_threshold(">", 200, 0)
 
-    raw_input('Press key to exit\n') # Use input() in Python 3
+    raw_input("Press key to exit\n") # Use input() in Python 3
     ipcon.disconnect()

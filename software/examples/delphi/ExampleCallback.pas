@@ -42,13 +42,13 @@ begin
   ipcon.Connect(HOST, PORT);
   { Don't use device before ipcon is connected }
 
+  { Register moisture value callback to procedure MoistureCB }
+  m.OnMoisture := {$ifdef FPC}@{$endif}MoistureCB;
+
   { Set period for moisture value callback to 1s (1000ms)
     Note: The moisture value callback is only called every second
           if the moisture value has changed since the last call! }
   m.SetMoistureCallbackPeriod(1000);
-
-  { Register moisture value callback to procedure MoistureCB }
-  m.OnMoisture := {$ifdef FPC}@{$endif}MoistureCB;
 
   WriteLn('Press key to exit');
   ReadLn;

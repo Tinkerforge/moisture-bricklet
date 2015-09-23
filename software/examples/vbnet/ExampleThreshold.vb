@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleThreshold
@@ -5,9 +6,9 @@ Module ExampleThreshold
     Const PORT As Integer = 4223
     Const UID As String = "XYZ" ' Change to your UID
 
-    ' Callback function for moisture value greater than 200
+    ' Callback subroutine for moisture value reached callback
     Sub MoistureReachedCB(ByVal sender As BrickletMoisture, ByVal moisture As Integer)
-        System.Console.WriteLine("Moisture Value: " + moisture.ToString())
+        Console.WriteLine("Moisture Value: " + moisture.ToString())
     End Sub
 
     Sub Main()
@@ -20,14 +21,14 @@ Module ExampleThreshold
         ' Get threshold callbacks with a debounce time of 1 second (1000ms)
         m.SetDebouncePeriod(1000)
 
-        ' Register threshold reached callback to function MoistureReachedCB
+        ' Register moisture value reached callback to subroutine MoistureReachedCB
         AddHandler m.MoistureReached, AddressOf MoistureReachedCB
 
-        ' Configure threshold for "greater than 200"
+        ' Configure threshold for moisture "greater than 200"
         m.SetMoistureCallbackThreshold(">"C, 200, 0)
 
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

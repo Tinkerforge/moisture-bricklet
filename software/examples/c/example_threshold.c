@@ -7,7 +7,7 @@
 #define PORT 4223
 #define UID "XYZ" // Change to your UID
 
-// Callback function for moisture value greater than 200
+// Callback function for moisture value reached callback
 void cb_moisture_reached(uint16_t moisture, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
@@ -33,13 +33,13 @@ int main(void) {
 	// Get threshold callbacks with a debounce time of 1 second (1000ms)
 	moisture_set_debounce_period(&m, 1000);
 
-	// Register threshold reached callback to function cb_moisture_reached
+	// Register moisture value reached callback to function cb_moisture_reached
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE_REACHED,
 	                           (void *)cb_moisture_reached,
 	                           NULL);
 
-	// Configure threshold for "greater than 200"
+	// Configure threshold for moisture value "greater than 200"
 	moisture_set_moisture_callback_threshold(&m, '>', 200, 0);
 
 	printf("Press key to exit\n");

@@ -16,8 +16,8 @@ if __name__ == "__main__":
     # Don't use device before ipcon is connected
 
     # Get current moisture value
-    moisture_value = m.get_moisture_value()
-    print('Moisture Value: ' + str(moisture_value))
+    moisture = m.get_moisture_value()
+    print("Moisture Value: " + str(moisture))
 
-    raw_input('Press key to exit\n') # Use input() in Python 3
+    raw_input("Press key to exit\n") # Use input() in Python 3
     ipcon.disconnect()

@@ -1,3 +1,4 @@
+Imports System
 Imports Tinkerforge
 
 Module ExampleSimple
@@ -13,11 +14,11 @@ Module ExampleSimple
         ' Don't use device before ipcon is connected
 
         ' Get current moisture value
-        Dim moistureValue As Integer = m.GetMoistureValue()
-        System.Console.WriteLine("Moisture Value: " + moistureValue.ToString())
+        Dim moisture As Integer = m.GetMoistureValue()
+        Console.WriteLine("Moisture Value: " + moisture.ToString())
 
-        System.Console.WriteLine("Press key to exit")
-        System.Console.ReadLine()
+        Console.WriteLine("Press key to exit")
+        Console.ReadLine()
         ipcon.Disconnect()
     End Sub
 End Module

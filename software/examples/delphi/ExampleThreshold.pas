@@ -24,7 +24,7 @@ const
 var
   e: TExample;
 
-{ Callback procedure for moisture value greater than 200 }
+{ Callback procedure for moisture value reached callback }
 procedure TExample.MoistureReachedCB(sender: TBrickletMoisture; const moisture: word);
 begin
   WriteLn(Format('Moisture Value: %d', [moisture]));
@@ -45,10 +45,10 @@ begin
   { Get threshold callbacks with a debounce time of 1 second (1000ms) }
   m.SetDebouncePeriod(1000);
 
-  { Register threshold reached callback to procedure MoistureReachedCB }
+  { Register moisture value reached callback to procedure MoistureReachedCB }
   m.OnMoistureReached := {$ifdef FPC}@{$endif}MoistureReachedCB;
 
-  { Configure threshold for "greater than 200" }
+  { Configure threshold for moisture value "greater than 200" }
   m.SetMoistureCallbackThreshold('>', 200, 0);
 
   WriteLn('Press key to exit');

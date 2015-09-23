@@ -1,14 +1,17 @@
 #!/bin/sh
-# connects to localhost:4223 by default, use --host and --port to change it
+# Connects to localhost:4223 by default, use --host and --port to change this
 
-# change to your UID
-uid=XYZ
+uid=XYZ # Change to your UID
 
-# get threshold callbacks with a debounce time of 1 seconds (1000ms)
+# Get threshold callbacks with a debounce time of 1 second (1000ms)
 tinkerforge call moisture-bricklet $uid set-debounce-period 1000
 
-# configure threshold for "greater than 200"
+# Handle incoming moisture value reached callbacks
+tinkerforge dispatch moisture-bricklet $uid moisture-reached &
+
+# Configure threshold for moisture value "greater than 200"
 tinkerforge call moisture-bricklet $uid set-moisture-callback-threshold greater 200 0
 
-# handle incoming moisture-reached callbacks
-tinkerforge dispatch moisture-bricklet $uid moisture-reached
+echo "Press key to exit"; read dummy
+
+kill -- -$$ # Stop callback dispatch in background

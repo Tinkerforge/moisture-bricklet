@@ -18,7 +18,6 @@ $ipcon->connect(HOST, PORT); // Connect to brickd
 
 // Get current moisture value
 $moisture = $m->getMoistureValue();
-
 echo "Moisture Value: $moisture\n";
 
 echo "Press key to exit\n";

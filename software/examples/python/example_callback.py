@@ -10,7 +10,7 @@ from tinkerforge.bricklet_moisture import BrickletMoisture
 
 # Callback function for moisture value callback
 def cb_moisture(moisture):
-    print('Moisture Value: ' + str(moisture))
+    print("Moisture Value: " + str(moisture))
 
 if __name__ == "__main__":
     ipcon = IPConnection() # Create IP connection
@@ -19,13 +19,13 @@ if __name__ == "__main__":
     ipcon.connect(HOST, PORT) # Connect to brickd
     # Don't use device before ipcon is connected
 
+    # Register moisture value callback to function cb_moisture
+    m.register_callback(m.CALLBACK_MOISTURE, cb_moisture)
+
     # Set period for moisture value callback to 1s (1000ms)
     # Note: The moisture value callback is only called every second
     #       if the moisture value has changed since the last call!
     m.set_moisture_callback_period(1000)
 
-    # Register moisture value callback to function cb_moisture
-    m.register_callback(m.CALLBACK_MOISTURE, cb_moisture)
-
-    raw_input('Press key to exit\n') # Use input() in Python 3
+    raw_input("Press key to exit\n") # Use input() in Python 3
     ipcon.disconnect()

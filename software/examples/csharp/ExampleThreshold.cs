@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -6,10 +7,10 @@ class Example
 	private static int PORT = 4223;
 	private static string UID = "XYZ"; // Change to your UID
 
-	// Callback function for moisture value greater than 200
+	// Callback function for moisture value reached callback
 	static void MoistureReachedCB(BrickletMoisture sender, int moisture)
 	{
-		System.Console.WriteLine("Moisture Value: " + moisture);
+		Console.WriteLine("Moisture Value: " + moisture);
 	}
 
 	static void Main()
@@ -23,14 +24,14 @@ class Example
 		// Get threshold callbacks with a debounce time of 1 second (1000ms)
 		m.SetDebouncePeriod(1000);
 
-		// Register threshold reached callback to function MoistureReachedCB
+		// Register moisture value reached callback to function MoistureReachedCB
 		m.MoistureReached += MoistureReachedCB;
 
-		// Configure threshold for "greater than 200"
+		// Configure threshold for moisture value "greater than 200"
 		m.SetMoistureCallbackThreshold('>', 200, 0);
 
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

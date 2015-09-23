@@ -34,28 +34,26 @@
                 var m = new Tinkerforge.BrickletMoisture(UID, ipcon); // Create device object
                 ipcon.connect(HOST, PORT,
                     function(error) {
-                        textArea.value += 'Error: '+error+ '\n';
+                        textArea.value += 'Error: ' + error + '\n';
                     }
                 ); // Connect to brickd
-
                 // Don't use device before ipcon is connected
+
                 ipcon.on(Tinkerforge.IPConnection.CALLBACK_CONNECTED,
-                    function(connectReason) {
-                        // Set Period for moisture callback to 1s (1000ms)
-                        // Note: The moisture callback is only called every second if the
-                        // moisture has changed since the last call!
-                        m.setMoistureCallbackPeriod(1000);
-                        // Get threshold callbacks with a debounce time of 1 seconds (1000ms)
+                    function (connectReason) {
+                        // Get threshold callbacks with a debounce time of 1 second (1000ms)
                         m.setDebouncePeriod(1000);
-                        // Configure threshold for "greater than 200"
+
+                        // Configure threshold for moisture value "greater than 200"
                         m.setMoistureCallbackThreshold('>', 200, 0);
                     }
                 );
-                // Register threshold reached callback
+
+                // Register moisture value reached callback
                 m.on(Tinkerforge.BrickletMoisture.CALLBACK_MOISTURE_REACHED,
-                    // Callback for moisture value greater than 200
-                    function(moisture) {
-                        textArea.value += 'Moisture Value: '+moisture+'\n';
+                    // Callback function for moisture value reached callback
+                    function (moisture) {
+                        textArea.value += 'Moisture Value: ' + moisture + '\n';
                         textArea.scrollTop = textArea.scrollHeight;
                     }
                 );

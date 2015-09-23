@@ -14,9 +14,9 @@ $ipcon->connect(&HOST, &PORT); # Connect to brickd
 # Don't use device before ipcon is connected
 
 # Get current moisture value
-my $moisture_value = $m->get_moisture_value();
-print "Moisture Value: " . $moisture_value . "\n";
+my $moisture = $m->get_moisture_value();
+print "Moisture Value: $moisture\n";
 
-print "Press any key to exit...\n";
+print "Press key to exit\n";
 <STDIN>;
 $ipcon->disconnect();

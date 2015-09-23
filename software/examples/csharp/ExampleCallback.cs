@@ -1,3 +1,4 @@
+using System;
 using Tinkerforge;
 
 class Example
@@ -9,7 +10,7 @@ class Example
 	// Callback function for moisture value callback
 	static void MoistureCB(BrickletMoisture sender, int moisture)
 	{
-		System.Console.WriteLine("Moisture Value: " + moisture);
+		Console.WriteLine("Moisture Value: " + moisture);
 	}
 
 	static void Main()
@@ -20,16 +21,16 @@ class Example
 		ipcon.Connect(HOST, PORT); // Connect to brickd
 		// Don't use device before ipcon is connected
 
+		// Register moisture value callback to function MoistureCB
+		m.Moisture += MoistureCB;
+
 		// Set period for moisture value callback to 1s (1000ms)
 		// Note: The moisture value callback is only called every second
 		//       if the moisture value has changed since the last call!
 		m.SetMoistureCallbackPeriod(1000);
 
-		// Register moisture value callback to function MoistureCB
-		m.Moisture += MoistureCB;
-
-		System.Console.WriteLine("Press enter to exit");
-		System.Console.ReadLine();
+		Console.WriteLine("Press enter to exit");
+		Console.ReadLine();
 		ipcon.Disconnect();
 	}
 }

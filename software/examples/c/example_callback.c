@@ -30,16 +30,16 @@ int main(void) {
 	}
 	// Don't use device before ipcon is connected
 
-	// Set period for moisture value callback to 1s (1000ms)
-	// Note: The moisture value callback is only called every second
-	//       if the moisture value has changed since the last call!
-	moisture_set_moisture_callback_period(&m, 1000);
-
 	// Register moisture value callback to function cb_moisture
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE,
 	                           (void *)cb_moisture,
 	                           NULL);
+
+	// Set period for moisture value callback to 1s (1000ms)
+	// Note: The moisture value callback is only called every second
+	//       if the moisture value has changed since the last call!
+	moisture_set_moisture_callback_period(&m, 1000);
 
 	printf("Press key to exit\n");
 	getchar();

@@ -3,17 +3,17 @@ LoadNETAssembly["Tinkerforge",NotebookDirectory[]<>"../../.."]
 
 host="localhost"
 port=4223
-uid="amb"(* Change to your UID *)
+uid="XYZ"(*Change to your UID*)
 
-(* Create IPConnection and device object *)
+(*Create IPConnection and device object*)
 ipcon=NETNew["Tinkerforge.IPConnection"]
 m=NETNew["Tinkerforge.BrickletMoisture",uid,ipcon]
 ipcon@Connect[host,port]
 
-(* Get current moisture value *)
+(*Get current moisture value*)
 Print["Moisture Value: "<>ToString[m@GetMoistureValue[]]]
 
-(* Clean up *)
+(*Clean up*)
 ipcon@Disconnect[]
 ReleaseNETObject[m]
 ReleaseNETObject[ipcon]
