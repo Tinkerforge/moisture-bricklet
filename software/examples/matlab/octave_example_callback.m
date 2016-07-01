@@ -3,7 +3,7 @@ function octave_example_callback()
 
     HOST = "localhost";
     PORT = 4223;
-    UID = "XYZ"; % Change to your UID
+    UID = "XYZ"; % Change XYZ to the UID of your Moisture Bricklet
 
     ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
     m = java_new("com.tinkerforge.BrickletMoisture", UID, ipcon); % Create device object
