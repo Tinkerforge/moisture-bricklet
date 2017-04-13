@@ -25,7 +25,7 @@ class Example
 		m.SetDebouncePeriod(1000);
 
 		// Register moisture value reached callback to function MoistureReachedCB
-		m.MoistureReached += MoistureReachedCB;
+		m.MoistureReachedCallback += MoistureReachedCB;
 
 		// Configure threshold for moisture value "greater than 200"
 		m.SetMoistureCallbackThreshold('>', 200, 0);

@@ -22,7 +22,7 @@ class Example
 		// Don't use device before ipcon is connected
 
 		// Register moisture value callback to function MoistureCB
-		m.Moisture += MoistureCB;
+		m.MoistureCallback += MoistureCB;
 
 		// Set period for moisture value callback to 1s (1000ms)
 		// Note: The moisture value callback is only called every second
