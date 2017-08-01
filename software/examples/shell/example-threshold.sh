@@ -10,7 +10,7 @@ tinkerforge call moisture-bricklet $uid set-debounce-period 1000
 tinkerforge dispatch moisture-bricklet $uid moisture-reached &
 
 # Configure threshold for moisture value "greater than 200"
-tinkerforge call moisture-bricklet $uid set-moisture-callback-threshold greater 200 0
+tinkerforge call moisture-bricklet $uid set-moisture-callback-threshold threshold-option-greater 200 0
 
 echo "Press key to exit"; read dummy
 

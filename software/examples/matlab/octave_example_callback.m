@@ -5,8 +5,8 @@ function octave_example_callback()
     PORT = 4223;
     UID = "XYZ"; % Change XYZ to the UID of your Moisture Bricklet
 
-    ipcon = java_new("com.tinkerforge.IPConnection"); % Create IP connection
-    m = java_new("com.tinkerforge.BrickletMoisture", UID, ipcon); % Create device object
+    ipcon = javaObject("com.tinkerforge.IPConnection"); % Create IP connection
+    m = javaObject("com.tinkerforge.BrickletMoisture", UID, ipcon); % Create device object
 
     ipcon.connect(HOST, PORT); % Connect to brickd
     % Don't use device before ipcon is connected
