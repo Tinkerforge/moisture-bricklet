@@ -19,7 +19,7 @@ Module ExampleCallback
         ' Don't use device before ipcon is connected
 
         ' Register moisture value callback to subroutine MoistureCB
-        AddHandler m.Moisture, AddressOf MoistureCB
+        AddHandler m.MoistureCallback, AddressOf MoistureCB
 
         ' Set period for moisture value callback to 1s (1000ms)
         ' Note: The moisture value callback is only called every second

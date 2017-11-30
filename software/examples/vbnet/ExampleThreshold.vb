@@ -22,7 +22,7 @@ Module ExampleThreshold
         m.SetDebouncePeriod(1000)
 
         ' Register moisture value reached callback to subroutine MoistureReachedCB
-        AddHandler m.MoistureReached, AddressOf MoistureReachedCB
+        AddHandler m.MoistureReachedCallback, AddressOf MoistureReachedCB
 
         ' Configure threshold for moisture "greater than 200"
         m.SetMoistureCallbackThreshold(">"C, 200, 0)

@@ -16,7 +16,7 @@ m@SetDebouncePeriod[1000]
 (*Callback function for moisture value reached callback*)
 MoistureReachedCB[sender_,moisture_]:=
  Print["Moisture Value: "<>ToString[moisture]]
-AddEventHandler[m@MoistureReached,MoistureReachedCB]
+AddEventHandler[m@MoistureReachedCallback,MoistureReachedCB]
 
 (*Configure threshold for moisture value "greater than 200"*)
 option=Tinkerforge`BrickletMoisture`THRESHOLDUOPTIONUGREATER

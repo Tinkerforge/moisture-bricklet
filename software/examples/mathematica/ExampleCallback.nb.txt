@@ -13,7 +13,7 @@ ipcon@Connect[host,port]
 (*Callback function for moisture value callback*)
 MoistureCB[sender_,moisture_]:=
  Print["Moisture Value: "<>ToString[moisture]]
-AddEventHandler[m@Moisture,MoistureCB]
+AddEventHandler[m@MoistureCallback,MoistureCB]
 
 (*Set period for moisture value callback to 1s (1000ms)*)
 (*Note: The moisture value callback is only called every second*)
