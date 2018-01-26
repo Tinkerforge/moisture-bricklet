@@ -11,7 +11,7 @@
 void cb_moisture(uint16_t moisture, void *user_data) {
 	(void)user_data; // avoid unused parameter warning
 
-	printf("Moisture Value: %d\n", moisture);
+	printf("Moisture Value: %u\n", moisture);
 }
 
 int main(void) {

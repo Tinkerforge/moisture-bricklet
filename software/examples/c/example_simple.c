@@ -30,7 +30,7 @@ int main(void) {
 		return 1;
 	}
 
-	printf("Moisture Value: %d\n", moisture);
+	printf("Moisture Value: %u\n", moisture);
 
 	printf("Press key to exit\n");
 	getchar();
