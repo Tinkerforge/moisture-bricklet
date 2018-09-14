@@ -24,7 +24,7 @@ Module ExampleThreshold
         ' Register moisture value reached callback to subroutine MoistureReachedCB
         AddHandler m.MoistureReachedCallback, AddressOf MoistureReachedCB
 
-        ' Configure threshold for moisture "greater than 200"
+        ' Configure threshold for moisture value "greater than 200"
         m.SetMoistureCallbackThreshold(">"C, 200, 0)
 
         Console.WriteLine("Press key to exit")
