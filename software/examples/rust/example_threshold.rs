@@ -15,10 +15,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     // Get threshold receivers with a debounce time of 1 second (1000ms).
     m.set_debounce_period(1000);
 
-    // Create receiver for moisture value reached events.
-    let moisture_reached_receiver = m.get_moisture_reached_receiver();
+    let moisture_reached_receiver = m.get_moisture_reached_callback_receiver();
 
-    // Spawn thread to handle received events. This thread ends when the `m` object
+    // Spawn thread to handle received callback messages.
+    // This thread ends when the `m` object
     // is dropped, so there is no need for manual cleanup.
     thread::spawn(move || {
         for moisture_reached in moisture_reached_receiver {
