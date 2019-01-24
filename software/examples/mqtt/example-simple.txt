@@ -1,0 +1,8 @@
+
+
+# Change XYZ to the UID of your Moisture Bricklet
+
+setup:
+	# Get current moisture value
+	subscribe to tinkerforge/response/moisture/XYZ/get_moisture_value
+	publish '' to tinkerforge/request/moisture_bricklet/XYZ/get_moisture_value 
