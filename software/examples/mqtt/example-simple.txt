@@ -3,4 +3,4 @@
 setup:
 	# Get current moisture value
 	subscribe to tinkerforge/response/moisture_bricklet/XYZ/get_moisture_value
-	publish '' to tinkerforge/request/moisture_bricklet/XYZ/get_moisture_value 
+	publish '' to tinkerforge/request/moisture_bricklet/XYZ/get_moisture_value
