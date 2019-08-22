@@ -36,7 +36,7 @@ int main(void) {
 	// Register moisture value reached callback to function cb_moisture_reached
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE_REACHED,
-	                           (void *)cb_moisture_reached,
+	                           (void (*)(void))cb_moisture_reached,
 	                           NULL);
 
 	// Configure threshold for moisture value "greater than 200"

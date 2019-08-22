@@ -33,7 +33,7 @@ int main(void) {
 	// Register moisture value callback to function cb_moisture
 	moisture_register_callback(&m,
 	                           MOISTURE_CALLBACK_MOISTURE,
-	                           (void *)cb_moisture,
+	                           (void (*)(void))cb_moisture,
 	                           NULL);
 
 	// Set period for moisture value callback to 1s (1000ms)
