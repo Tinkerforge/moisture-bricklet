@@ -4,7 +4,7 @@ setup:
 	# Handle incoming moisture value callbacks
 	subscribe to tinkerforge/callback/moisture_bricklet/XYZ/moisture
 	publish '{"register": true}' to tinkerforge/register/moisture_bricklet/XYZ/moisture # Register moisture callback
-	
+
 	# Set period for moisture value callback to 1s (1000ms)
 	# Note: The moisture value callback is only called every second
 	#       if the moisture value has changed since the last call!
