@@ -20,7 +20,7 @@ func main() {
 
 	// Get current moisture value.
 	moisture, _ := m.GetMoistureValue()
-	fmt.Printf("Moisture Value: \n", moisture)
+	fmt.Printf("Moisture Value: %d\n", moisture)
 
 	fmt.Print("Press enter to exit.")
 	fmt.Scanln()
